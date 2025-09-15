@@ -173,7 +173,17 @@ Bind for 0.0.0.0:80 failed: port is already allocated
 error mounting "/data/coolify/applications/.../nginx.conf" to rootfs at "/etc/nginx/nginx.conf"
 ```
 
-**Решение:** Конфигурация nginx уже включена в Docker образ через Dockerfile, поэтому монтирование не требуется.
+**Решение:** 
+1. Конфигурация nginx уже включена в Docker образ через Dockerfile
+2. Все файлы копируются в образ при сборке
+3. Volumes не используются для избежания конфликтов с Coolify
+
+### Coolify создает директории вместо файлов
+
+Если Coolify создает `nginx.conf` как директорию:
+- Это нормальное поведение Coolify при работе с Git
+- Все файлы копируются в Docker образ при сборке
+- Volumes не используются для статических файлов
 
 ### Проблемы с health check
 

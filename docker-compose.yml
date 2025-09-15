@@ -6,8 +6,6 @@ services:
     restart: unless-stopped
     ports:
       - "${PORT:-3000}:80"
-    volumes:
-      - ./public_html:/usr/share/nginx/html:ro
     environment:
       - NGINX_HOST=${NGINX_HOST:-localhost}
       - NGINX_PORT=${NGINX_PORT:-80}

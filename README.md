@@ -166,6 +166,15 @@ Bind for 0.0.0.0:80 failed: port is already allocated
 2. Coolify автоматически установит переменную `PORT` для избежания конфликтов
 3. Если проблема остается, в настройках Coolify установите переменную `PORT` вручную (например, `3000`)
 
+### Ошибка монтирования nginx.conf
+
+Если получаете ошибку:
+```
+error mounting "/data/coolify/applications/.../nginx.conf" to rootfs at "/etc/nginx/nginx.conf"
+```
+
+**Решение:** Конфигурация nginx уже включена в Docker образ через Dockerfile, поэтому монтирование не требуется.
+
 ### Проблемы с health check
 
 Если health check не проходит:
